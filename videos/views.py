@@ -9,7 +9,6 @@ from rest_framework.permissions import AllowAny
 from .serializers import SearchQuerySerializer
 # YT API endpoints
 SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search'
-VIDEO_URL = 'https://www.googleapis.com/youtube/v3/videos'
 
 
 class TestAppAPIView(APIView):
