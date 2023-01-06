@@ -20,6 +20,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+
+# YOUTUBE API KEY to fetch videos
+YOUTUBE_API_KEY='AIzaSyDqUqgvH3m2shnKXgeEhaAL299zNg4F1fE'
+
+
 SECRET_KEY = 'django-insecure-@oj8t&y@%ti(&5l+0*qkzsw^chyi-zu*6b8r7xcc2sro(*%(3l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -37,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'videos',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
