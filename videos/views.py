@@ -6,7 +6,15 @@ from rest_framework import status
 import requests
 from rest_framework.permissions import AllowAny
 
-from .serializers import SearchQuerySerializer
+# Serializers
+from .serializers import SearchQuerySerializer, VideoSerializer
+
+# Models
+from .models import Video
+
+# pagination
+from rest_framework.generics import ListAPIView
+from rest_framework import pagination
 # YT API endpoints
 SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search'
 
@@ -60,6 +68,28 @@ class GetYTVideos(APIView):
             }, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
+
+
+
+class CustomPagination(pagination.PageNumberPagination):
+    page_size = 2
+    page_size_query_param = 'page_size'
+    max_page_size = 50
+    page_query_param = 'page_number'
+
+
+class VideoListView(ListAPIView):
+    queryset = Video.objects.all()
+    serializer_class = VideoSerializer
+    pagination_class = CustomPagination
+    filterset_fields = ['title', 'description']
+    ordering_fields = ['published_at']
+    ordering = ['-published_at']
+
+    def get_queryset(self):
+        return Video.objects.filter().order_by('-published_at')
+
+
             
          
 
