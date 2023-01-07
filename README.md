@@ -10,6 +10,7 @@ API server to fetch YT videos for given search-query[cricket, football etc.] at 
 - Django-Restframework
 - Sqlite
 - Youtube API
+- Docker
 
 ## Application Structure
 
@@ -35,6 +36,16 @@ API server to fetch YT videos for given search-query[cricket, football etc.] at 
  * Run the server:
 > python manage.py runserver
 
+### API Endpoints
+
+List of available routes:
+
+**Video routes**:\
+`GET api/v1/test` - get api to test server\
+`POST api/v1/search-video` - api to getVideo from YT for given searchQuery\
+`GET api/v1/video` - API to fetch video from Db in reverse chrono order\
+
+
 ## Contributors
-Saurav Fouzdar
+Saurav Fouzdar and amazing developers who created django,django_rest_framework
 
