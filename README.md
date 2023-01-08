@@ -35,6 +35,19 @@ API server to fetch YT videos for given search-query[cricket, football etc.] at 
  * Run the server:
 > python manage.py runserver
 
+
+Docker Setup
+---
+ * Install [docker compose](https://docs.docker.com/compose/install/)
+ * Run docker:
+> Create logs foleder with `app.log` and `error.log` file inside root directory
+
+> docker-compose build
+
+> docker-compose up
+ * To check the server, open `http://localhost:8000/`
+
+
 ### API Endpoints
 
 List of available routes:
@@ -44,7 +57,10 @@ List of available routes:
 `POST api/v1/search-video` - api to getVideo from YT for given searchQuery\
 `GET api/v1/video` - API to fetch video from Db in reverse chrono order\
 `GET api/v1/video?page_number=1&page_size=4` using pagination\
-`GET api/v1/video?title=cricket&description=playing` search api with title&description
+`GET api/v1/video?title=cricket&description=playing` search api with title & description
+
+
+## Approach for bonus question
 
 ## Contributors
 Saurav Fouzdar and amazing developers who created django,django_rest_framework
