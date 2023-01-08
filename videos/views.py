@@ -15,6 +15,11 @@ from .models import Video
 # pagination
 from rest_framework.generics import ListAPIView
 from rest_framework import pagination
+
+#utils 
+from .utils import CustomPagination, VideoFilter
+from django_filters.rest_framework import DjangoFilterBackend
+
 # YT API endpoints
 SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search'
 
@@ -70,19 +75,12 @@ class GetYTVideos(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
 
 
-
-class CustomPagination(pagination.PageNumberPagination):
-    page_size = 2
-    page_size_query_param = 'page_size'
-    max_page_size = 50
-    page_query_param = 'page_number'
-
-
 class VideoListView(ListAPIView):
     queryset = Video.objects.all()
     serializer_class = VideoSerializer
     pagination_class = CustomPagination
-    filterset_fields = ['title', 'description']
+    filter_backends = [DjangoFilterBackend]
+    filter_class = VideoFilter
     ordering_fields = ['published_at']
     ordering = ['-published_at']
 

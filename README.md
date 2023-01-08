@@ -3,7 +3,6 @@
 
 API server to fetch YT videos for given search-query[cricket, football etc.] at a periodic interval using YT API
 
-
 ## Tech Stack
 
 - Django
@@ -44,8 +43,13 @@ List of available routes:
 `GET api/v1/test` - get api to test server\
 `POST api/v1/search-video` - api to getVideo from YT for given searchQuery\
 `GET api/v1/video` - API to fetch video from Db in reverse chrono order\
-
+`GET api/v1/video?page_number=1&page_size=4` using pagination\
+`GET api/v1/video?title=cricket&description=playing` search api with title&description
 
 ## Contributors
 Saurav Fouzdar and amazing developers who created django,django_rest_framework
+
+
+
+
 
