@@ -61,6 +61,12 @@ List of available routes:
 
 
 ## Approach for bonus question
+* Adding api keys to limit request with single APIKey
+  - Create a APIkey table that stores `UserId`,`APIKey`,`requests`
+  - APIKey will be generated using `APIKeyGenerator` Service
+  - Each time user send request using key, `requests` field will be decremented by 1.
+  - to generate APIKey, will have to implement `JWT Authentication`, to allow user create API Key if `Authenticated`
+  - When `100 requests` are exhausted, Will search for next APIKey with `UserId`, and `requests` field with greater than zero  
 
 ## Contributors
 Saurav Fouzdar and amazing developers who created django,django_rest_framework
