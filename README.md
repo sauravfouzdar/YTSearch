@@ -68,6 +68,17 @@ List of available routes:
   - to generate APIKey, will have to implement `JWT Authentication`, to allow user create API Key if `Authenticated`
   - When `100 requests` are exhausted, Will search for next APIKey with `UserId`, and `requests` field with greater than zero  
 
+* Skipping the second second bonus question, since it's optional
+* Optimizing API search for partial match using title & description 
+  - Here I need to create a `Custom Search Filter` linear string matching
+  - Algorithm(Naive approach):
+    - take search query as tokens/words
+    - store targeted model field in list where each element of list contains one word
+    - and do `bruteForce` search for each word 
+    - Time Complexity : O(n*m) ,where n = length_of_search_query/total_words/token, m = length_of_model_field/total words
+    - Space Complexity : O(m), extra space required to stored query in RAM, here ignoring model field space as it is stored in Disk/Database
+
+    
 ## Contributors
 Saurav Fouzdar and amazing developers who created django,django_rest_framework
 
