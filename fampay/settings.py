@@ -44,8 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'videos',
     'rest_framework',
-    'django_crontab',
-    'django_filters'
+    'django_crontab'
 ]
 
 REST_FRAMEWORK = {
@@ -141,5 +140,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CRONJOBS = [
-    ('*/10 * * * *', 'videos.cron.fetch_youtube_video')
+    ('*/1 * * * *', 'videos.cron.fetch_youtube_video')
 ]

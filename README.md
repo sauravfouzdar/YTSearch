@@ -7,9 +7,11 @@ API server to fetch YT videos for given search-query[cricket, football etc.] at 
 
 - Django
 - Django-Restframework
-- Sqlite
+- ~~Sqlite~~ Postgres
 - Youtube API
 - Docker
+- Celery
+- RabbitMQ/Redis
 
 ## Application Structure
 
@@ -60,7 +62,7 @@ List of available routes:
 `GET api/v1/video?title=cricket&description=playing` search api with title & description
 
 
-## Approach for bonus question
+## Approach for bonus questions
 * Adding api keys to limit request with single APIKey
   - Create a APIkey table that stores `UserId`,`APIKey`,`requests`
   - APIKey will be generated using `APIKeyGenerator` Service
@@ -78,7 +80,7 @@ List of available routes:
     - Time Complexity : O(n*m) ,where n = length_of_search_query/total_words/token, m = length_of_model_field/total words
     - Space Complexity : O(m), extra space required to stored query in RAM, here ignoring model field space as it is stored in Disk/Database
 
-    
+
 ## Contributors
 Saurav Fouzdar and amazing developers who created django,django_rest_framework
 

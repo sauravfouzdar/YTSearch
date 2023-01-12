@@ -27,24 +27,27 @@ def fetch_youtube_video():
     }
     response = requests.get(SEARCH_URL, params=search_parameters).json()['items']
 
-# Iterate through the results and store them in your Django model
+# Iterate through the results and store them in list and bulk upload 
+    youtube_video_response = []
     for item in response['items']:
         video_id = item['id']['videoId']
         title = item['snippet']['title']
         description = item['snippet']['description']
         published_at = item['snippet']['publishedAt']
         thumbnail_url = item['snippet']['thumbnails']['url']
+        
+        youtube_video_response.append(video_id=video_id,title=title,description=description,published_at=published_at,thumbnail_url=thumbnail_url)
 
         # Create or update the Video model with the fetched data
-        video, created = Video.objects.update_or_create(
-            video_id=video_id,
-            defaults={
-                'title': title,
-                'description': description,
-                'published_at': published_at,
-                'thumbnail_url': thumbnail_url,
-            }
-        )
 
-        print(video)
-        print(created)
+        # video, created = Video.objects.update_or_create(
+        #     video_id=video_id,
+        #     defaults={
+        #         'title': title,
+        #         'description': description,
+        #         'published_at': published_at,
+        #         'thumbnail_url': thumbnail_url,
+        #     }
+        # )
+
+    Video.objects.bulk_create(youtube_video_response)
