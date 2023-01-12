@@ -4,6 +4,10 @@ from django.conf import settings
 import requests
 
 
+import environ
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
 
 # YT API endpoints
 SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search'

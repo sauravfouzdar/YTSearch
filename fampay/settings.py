@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import environ
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,10 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # YOUTUBE API KEY to fetch videos
-YOUTUBE_API_KEY='AIzaSyDqUqgvH3m2shnKXgeEhaAL299zNg4F1fE'
-
-
-SECRET_KEY = 'django-insecure-@oj8t&y@%ti(&5l+0*qkzsw^chyi-zu*6b8r7xcc2sro(*%(3l'
+YOUTUBE_API_KEY=env("YOUTUBE_API_KEY")
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -88,8 +90,12 @@ WSGI_APPLICATION = 'fampay.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': env("NAME"),
+       'USER': env("USER"),
+       'PASSWORD': env("PASSWORD"),
+       'HOST': env("HOST"),
+       'PORT': env("PORT"),
     }
 }
 
