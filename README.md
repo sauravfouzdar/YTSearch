@@ -1,7 +1,16 @@
 
 # YTSearch
 
-API server to fetch YT videos for given search-query[cricket, football etc.] at a periodic interval using YT API
+API server to fetch YT videos for given search-query[cricket, football etc.] using distributed task processing on YT API using celery/rabbitMQ
+ 
+## Scalibility 
+
+- The App can be scaled horizontally using Postgres
+- Pagination
+- Bulk create to optimize number of write queries.
+- Use of distributed task processing to fetch videos asyncronously using Celery, RabbitMQ/Redis for high scalibility. 
+- In-built logging
+
 
 ## Tech Stack
 
