@@ -69,7 +69,7 @@ List of available routes:
 `GET api/v1/video` - API to fetch video from Db in reverse chrono order\
 `GET api/v1/video?page_number=1&page_size=4` using pagination\
 `GET api/v1/video?title=cricket&description=playing` search api with title & description
-
+<!-- 
 
 ## Approach for bonus questions
 * Adding api keys to limit request with single APIKey
@@ -87,7 +87,7 @@ List of available routes:
     - store targeted model field in list where each element of list contains one word
     - and do `bruteForce` search for each word 
     - Time Complexity : O(n*m) ,where n = length_of_search_query/total_words/token, m = length_of_model_field/total words
-    - Space Complexity : O(m), extra space required to stored query in RAM, here ignoring model field space as it is stored in Disk/Database
+    - Space Complexity : O(m), extra space required to stored query in RAM, here ignoring model field space as it is stored in Disk/Database -->
 
 
 ## Contributors
